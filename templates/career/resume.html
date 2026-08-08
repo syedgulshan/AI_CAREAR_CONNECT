@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Resume Analyzer - AI Career Connect{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-white drop-shadow"><i class="bi bi-file-earmark-person me-2"></i>Resume Analyzer</h1>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow glassmorphism">
+            <div class="card-header bg-transparent border-bottom-0"><h5 class="mb-0">Paste Resume Content</h5></div>
+            <div class="card-body">
+                <form id="resume-form">
+                    <div class="mb-3">
+                        <textarea class="form-control" id="resume_text" rows="12" placeholder="Paste the text of your resume here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" id="btn-analyze-resume">
+                        <i class="bi bi-search me-2"></i>Analyze Resume
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow glassmorphism h-100">
+            <div class="card-header bg-transparent border-bottom-0"><h5 class="mb-0">AI Feedback</h5></div>
+            <div class="card-body">
+                <div id="resume-feedback-container" class="d-none">
+                    <div id="resume-feedback" style="white-space: pre-wrap;"></div>
+                </div>
+                <div id="resume-empty-state" class="text-center text-muted mt-5">
+                    <i class="bi bi-robot fs-1 d-block mb-3"></i>
+                    <p>Paste your resume and click analyze to get detailed feedback on strengths, weaknesses, and ATS optimization.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/career.js') }}"></script>
+{% endblock %}

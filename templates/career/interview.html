@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Interview Question Analyzer - AI Career Connect{% endblock %}
+
+{% block content %}
+<h1 class="mb-4 text-white drop-shadow"><i class="bi bi-mic me-2"></i>Interview Prep</h1>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow glassmorphism">
+            <div class="card-header bg-transparent border-bottom-0"><h5 class="mb-0">Job Details</h5></div>
+            <div class="card-body">
+                <form id="interview-form">
+                    <div class="mb-3">
+                        <label for="interview_role" class="form-label">Role</label>
+                        <input type="text" class="form-control" id="interview_role" placeholder="e.g. Data Scientist" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="interview_skills" class="form-label">Key Skills (Optional)</label>
+                        <input type="text" class="form-control" id="interview_skills" placeholder="e.g. Python, SQL, Statistics">
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" id="btn-generate-questions">
+                        <i class="bi bi-lightning-charge me-2"></i>Generate Questions
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow glassmorphism h-100">
+            <div class="card-header bg-transparent border-bottom-0"><h5 class="mb-0">Generated Questions</h5></div>
+            <div class="card-body">
+                <div id="interview-questions-container" class="d-none">
+                    <div id="interview-questions" style="white-space: pre-wrap;"></div>
+                </div>
+                <div id="interview-empty-state" class="text-center text-muted mt-5">
+                    <i class="bi bi-chat-right-quote fs-1 d-block mb-3"></i>
+                    <p>Enter a role to generate tailored behavioral, technical, and situational interview questions with expected answers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/career.js') }}"></script>
+{% endblock %}

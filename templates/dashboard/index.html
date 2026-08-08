@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}Dashboard - AI Career Connect{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">
+    <i class="bi bi-speedometer2 me-2"></i>Dashboard
+</h1>
+
+<!-- ── Stats Cards ── -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white shadow">
+            <div class="card-body text-center">
+                <i class="bi bi-chat-dots fs-1"></i>
+                <h3 class="mt-2" id="stat-conversations">{{ stats.total_conversations }}</h3>
+                <p class="mb-0">Conversations</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white shadow">
+            <div class="card-body text-center">
+                <i class="bi bi-envelope fs-1"></i>
+                <h3 class="mt-2" id="stat-messages">{{ stats.total_messages }}</h3>
+                <p class="mb-0">Messages</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white shadow">
+            <div class="card-body text-center">
+                <i class="bi bi-briefcase fs-1"></i>
+                <h3 class="mt-2" id="stat-profiles">{{ stats.total_profiles }}</h3>
+                <p class="mb-0">Career Profiles</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark shadow">
+            <div class="card-body text-center">
+                <i class="bi bi-map fs-1"></i>
+                <h3 class="mt-2" id="stat-roadmaps">{{ stats.total_roadmaps }}</h3>
+                <p class="mb-0">Roadmaps</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Quick Actions ── -->
+<div class="row g-4 mb-4">
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header"><h5 class="mb-0">Quick Actions</h5></div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ url_for('ai_chat.chat_page') }}" class="btn btn-outline-primary">
+                        <i class="bi bi-chat-dots me-2"></i>Start New Chat
+                    </a>
+                    <a href="{{ url_for('career.career_profile_page') }}" class="btn btn-outline-success">
+                        <i class="bi bi-briefcase me-2"></i>Create Career Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header"><h5 class="mb-0">Recent Conversations</h5></div>
+            <div class="card-body">
+                {% if recent_conversations %}
+                <ul class="list-group list-group-flush">
+                    {% for conv in recent_conversations %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>{{ conv.title }}</span>
+                        <small class="text-muted">{{ conv.updated_at.strftime('%b %d') }}</small>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="text-muted mb-0">No conversations yet. Start chatting with the AI!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── Activity Chart Placeholder ── -->
+<div class="card shadow">
+    <div class="card-header"><h5 class="mb-0">Activity This Week</h5></div>
+    <div class="card-body">
+        <canvas id="activityChart" height="100"></canvas>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

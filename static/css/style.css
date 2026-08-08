@@ -1,0 +1,109 @@
+/*
+ * AI Career Connect - Global Styles
+ * ===================================
+ * Custom styles layered on top of Bootstrap 5.
+ */
+
+/* ── Base ── */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Vibrant modern colorful gradient background */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Text shadow for headings on colorful backgrounds */
+.drop-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ── Navbar ── */
+.navbar {
+    background-color: rgba(33, 37, 41, 0.85) !important;
+    backdrop-filter: blur(10px);
+}
+.navbar-brand {
+    font-size: 1.3rem;
+    letter-spacing: -0.5px;
+}
+
+/* ── Cards ── */
+.card {
+    border: none;
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Glassmorphism ── */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ── Chat area ── */
+#chat-messages {
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+.message-bubble {
+    max-width: 75%;
+    padding: 10px 16px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+}
+
+.message-user {
+    background-color: #0d6efd;
+    color: #fff;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.message-assistant {
+    background-color: #e9ecef;
+    color: #212529;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+/* ── Dashboard stat cards ── */
+.card.bg-primary,
+.card.bg-success,
+.card.bg-info,
+.card.bg-warning {
+    border-radius: 16px;
+}
+
+/* ── Voice button animation ── */
+#btn-voice.recording {
+    animation: pulse 1s infinite;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+@keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.5); }
+    70%  { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* ── Responsive tweaks ── */
+@media (max-width: 768px) {
+    .message-bubble {
+        max-width: 90%;
+    }
+}
